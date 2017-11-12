@@ -1,40 +1,38 @@
 package com.springboot.api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "user")
 public class User {
 
-	private Integer id;
-	
-	@JsonProperty("first_name")
-	private String firstName;
-
-	@JsonProperty("last_name")
-	private String lastName;
-	
+	@Id
+	private String id;
+	private String firstname;
+	private String lastname;
 	private String username;
 	private String password;
 	private String email;
 	private String birthday;
 
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String firstname) {
+		this.firstname = firstname;
 	}
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String lastname) {
+		this.lastname = lastname;
 	}
 	public String getUsername() {
 		return username;
@@ -63,7 +61,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
 				+ ", password=" + password + ", email=" + email + ", birthday=" + birthday + "]";
 	}
 }

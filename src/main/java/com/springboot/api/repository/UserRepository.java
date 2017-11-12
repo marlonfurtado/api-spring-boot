@@ -1,17 +1,9 @@
 package com.springboot.api.repository;
 
-import java.util.Collection;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.springboot.api.model.User;
 
-public interface UserRepository {
-
-	Collection<User> findAll();
-
-	void findById(String id);
-	
-	void save(User user);
-	
-	void delete(String id);
+public interface UserRepository extends MongoRepository<User, String> {
 	
 }
