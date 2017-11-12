@@ -15,7 +15,6 @@ public class User {
 	private String email;
 	private String birthday;
 
-
 	public String getId() {
 		return id;
 	}

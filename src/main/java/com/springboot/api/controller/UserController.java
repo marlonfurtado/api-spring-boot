@@ -4,7 +4,10 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,15 +27,28 @@ public class UserController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
-	public void findById(String id) {
-		
+	@RequestMapping(method = RequestMethod.GET, value = "/users/{id}")
+	public ResponseEntity<User> findById(@PathVariable String id) {
+		User user = userService.findById(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
-	public void save(User user) {
-		
+	@RequestMapping(method = RequestMethod.POST, value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> save(@RequestBody User user) {
+		userService.save(user);
+		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 
-	public void delete(User user) {
-		
+	@RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
+	public ResponseEntity<User> update(@RequestBody User user) {
+		userService.update(user);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
+	public ResponseEntity<String> delete(@PathVariable String id) {
+		userService.delete(id);
+		String message = "User " +id+ " deleted!";
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 }
