@@ -1,0 +1,8 @@
+<div>
+	Users: 
+	<ul>
+		<div ng-repeat="user in users">
+			<li>{{user.firstName +' '+ user.lastName}}  <a href="users/{{user.id}}">Details</a></li>
+		</div>
+	</ul>
+</div>
