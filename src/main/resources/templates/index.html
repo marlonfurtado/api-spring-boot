@@ -15,7 +15,7 @@
     <title>MoviesUsers</title>
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="userController">
     See on route:
     <a href="/">Home</a> |
     <a href="/users">Users</a> |
@@ -25,6 +25,26 @@
     Path: {{$location.path()}} <br/>
     Template URL: {{$route.current.templateUrl}} <br/>
     Parameters: {{$routeParams}} <br/>
+    <br /><br />
+
+    <div>
+        First Name:<br />
+        <span><input type="text" ng-model="user.firstName" /><br /></span>
+        <br />
+        Last Name:<br />
+        <span><input type="text" ng-model="user.lastName" /><br /></span>
+        <br />
+        Username:<br />
+        <span><input type="text" ng-model="user.username" /><br /></span>
+        <br />
+        Email:<br />
+        <span><input type="text" ng-model="user.email" /><br /></span>
+        <br />
+        Password:<br />
+        <span><input type="password" ng-model="user.password" /><br /></span>
+        <br />
+        <input type="button" value="Save" ng-click="save()" />
+    </div>
 
     <ng-view></ng-view>
 </body>

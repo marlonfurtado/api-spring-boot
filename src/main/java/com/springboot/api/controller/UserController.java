@@ -39,7 +39,7 @@ public class UserController {
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
+	@RequestMapping(method = RequestMethod.PUT, value = "/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> update(@RequestBody User user) {
 		userService.update(user);
 		return new ResponseEntity<>(user, HttpStatus.OK);
@@ -48,7 +48,6 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
 	public ResponseEntity<String> delete(@PathVariable String id) {
 		userService.delete(id);
-		String message = "User " +id+ " deleted!";
-		return new ResponseEntity<>(message, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
