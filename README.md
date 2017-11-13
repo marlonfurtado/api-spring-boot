@@ -15,6 +15,7 @@
   <li><strike> Endpoints </strike></li>
   <li><strike> MongoDB integration </strike></li>
   <li>AngularJS - <i>[DOING]</i></li>
+  <li>Spring Authorization</li>
   <li>CSS</li>
   <li>Heroku</li>
 </ul>
