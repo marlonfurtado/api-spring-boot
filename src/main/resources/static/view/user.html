@@ -1,12 +1,47 @@
 <div>
-	Users:
-	<ul>
-		<div ng-repeat="user in users">
-			<li>{{user.firstName +' '+ user.lastName}}
-				<a href="users/{{user.id}}">Details</a>
-				<input type="button" value="Delete" ng-click="$scope.delete(user)" />
-				<input type="button" value="Update" ng-click="$scope.update(user)" />
-			</li>
+	<form>
+		<div>
+			First Name:
+			<input type="text" ng-model="user.firstName" required="true" />
 		</div>
-	</ul>
+		<div>
+			Last Name:
+			<input type="text" ng-model="user.lastName" required="true" />
+		</div>
+		<div>
+			Username:
+			<input type="text" ng-model="user.username" required="true" />
+		</div>
+		<div>
+			Email:
+			<input type="text" ng-model="user.email" required="true" />
+		</div>
+		<div>
+			Password:
+			<input type="password" ng-model="user.password" required="true" />
+		</div>
+		<div>
+			Birthday:
+			<input type="text" ng-model="user.birthday" />
+		</div>
+		<div>
+			<input type="button" value="Save" ng-click="save()" />
+			<input type="button" value="Cancel" ng-click="cancelUpdate(user)" />
+		</div>
+	</form>
+
+	<br /><br />
+	
+	<div>
+		Users:
+		<ul>
+			<div ng-repeat="user in users">
+				<li>{{user.firstName +' '+ user.lastName}}
+					<a href="users/{{user.id}}">Details</a>
+					<input type="button" value="Delete" ng-click="delete(user)" />
+					<input type="button" value="Update" ng-click="update(user)" />
+				</li>
+			</div>
+		</ul>
+	</div>
 </div>
