@@ -2,7 +2,7 @@ app.controller("userController", function ($scope, $http) {
     $scope.users = [];
     $scope.user = {};
 
-    $scope.load = function () {
+    load = function () {
         $http.get("http://localhost:8080/users")
             .then(function (response) {
                 $scope.users = response.data;
@@ -15,7 +15,8 @@ app.controller("userController", function ($scope, $http) {
     $scope.save = function () {
         $http.post("http://localhost:8080/users", $scope.user)
             .then(function (response) {
-                $scope.user = response.data;
+                load();
+                $scope.user = {};
             })
             .catch(function (err) {
                 console.log(err);
@@ -33,5 +34,13 @@ app.controller("userController", function ($scope, $http) {
             });
     }
 
-    $scope.load();
+    $scope.update = function(user) {
+        $scope.user = angular.copy(user);
+    }
+    
+    $scope.cancelUpdate = function () {
+        $scope.user = {};
+    }
+
+    load();
 })

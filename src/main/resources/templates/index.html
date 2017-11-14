@@ -9,9 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/controller/main-controller.js"></script>
     <script src="./js/controller/user-controller.js"></script>
     <script src="./js/controller/user-detail-controller.js"></script>
-    <script src="./js/controller/main-controller.js"></script>
     <title>MoviesUsers</title>
 </head>
 
@@ -21,11 +21,11 @@
     <a href="/users">Users</a> |
     <a href="/movies">Movies</a>
 
-    <br/><br/>
-    Path: {{$location.path()}} <br/>
-    Template URL: {{$route.current.templateUrl}} <br/>
-    Parameters: {{$routeParams}} <br/>
-    <br /><br />
+        <br/><br/>
+        Path: {{$location.path()}} <br/>
+        Template URL: {{$route.current.templateUrl}} <br/>
+        Parameters: {{$routeParams}} <br/>
+        <br /><br />
 
     <div>
         First Name:<br />
@@ -44,6 +44,7 @@
         <span><input type="password" ng-model="user.password" /><br /></span>
         <br />
         <input type="button" value="Save" ng-click="save()" />
+        <input type="button" value="Cancel" ng-click="cancelUpdate(user)" />
     </div>
 
     <ng-view></ng-view>

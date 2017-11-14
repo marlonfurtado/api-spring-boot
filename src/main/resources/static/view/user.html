@@ -1,10 +1,11 @@
 <div>
-	Users: 
+	Users:
 	<ul>
 		<div ng-repeat="user in users">
 			<li>{{user.firstName +' '+ user.lastName}}
 				<a href="users/{{user.id}}">Details</a>
-				<input type="button" value="Delete" ng-click="delete(user)" />
+				<input type="button" value="Delete" ng-click="$scope.delete(user)" />
+				<input type="button" value="Update" ng-click="$scope.update(user)" />
 			</li>
 		</div>
 	</ul>
