@@ -17,6 +17,7 @@ app.controller("userController", function ($scope, $http) {
             .then(function (response) {
                 load();
                 $scope.user = {};
+                $scope.formUser.$setPristine(true);
             })
             .catch(function (err) {
                 console.log(err);

@@ -1,37 +1,45 @@
 <div>
-	<form>
+	<form novalidate='' name="formUser">
 		<div>
 			First Name:
-			<input type="text" ng-model="user.firstName" required="true" />
+			<input name="firstName" type="text" ng-model="user.firstName" required="true" />
+			<span ng-show="formUser.firstName.$error.required && formUser.firstName.$dirty">Required</span>
 		</div>
 		<div>
 			Last Name:
-			<input type="text" ng-model="user.lastName" required="true" />
+			<input name="lastName" type="text" ng-model="user.lastName" required="true" />
+			<span ng-show="formUser.lastName.$error.required && formUser.lastName.$dirty">Required</span>
 		</div>
 		<div>
 			Username:
-			<input type="text" ng-model="user.username" required="true" />
+			<input name="username" type="text" ng-model="user.username" required="true" />
+			<span ng-show="formUser.username.$error.required && formUser.username.$dirty">Required</span>
 		</div>
 		<div>
 			Email:
-			<input type="text" ng-model="user.email" required="true" />
+			<input name="email" type="email" ng-model="user.email" required="true" />
+			<span ng-show="formUser.email.$error.required && formUser.email.$dirty">Required</span>
+			<span ng-show="formUser.email.$error.email && formUser.email.$dirty">Incorrect</span>
 		</div>
 		<div>
 			Password:
-			<input type="password" ng-model="user.password" required="true" />
+			<input name="password" type="password" ng-model="user.password" ng-minlength="6" required="true" />
+			<span ng-show="formUser.password.$error.required && formUser.password.$dirty">Required</span>
+			<span ng-show="formUser.password.$error.minlength && formUser.password.$dirty">Minimum required</span>
 		</div>
 		<div>
 			Birthday:
-			<input type="text" ng-model="user.birthday" />
+			<input name="birthday" type="text" ng-model="user.birthday" />
 		</div>
 		<div>
-			<input type="button" value="Save" ng-click="save()" />
-			<input type="button" value="Cancel" ng-click="cancelUpdate(user)" />
+			<input type="button" value="Save" ng-click="save()" ng-disabled="formUser.$invalid" />
+			<input type="button" value="Cancel" ng-click="cancelUpdate(user)" ng-disabled="formUser.$pristine" />
 		</div>
 	</form>
 
-	<br /><br />
-	
+	<br />
+	<br />
+
 	<div>
 		Users:
 		<ul>
