@@ -46,9 +46,12 @@ public class MovieController {
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/movies/{id}")
-	public ResponseEntity<String> delete(@PathVariable String id) {
+	public ResponseEntity<Movie> delete(@PathVariable String id) {
+		Movie movie = movieService.findById(id);
+		if(movie == null)
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 		movieService.delete(id);
-		String message = "Movie " +id+ " deleted!";
-		return new ResponseEntity<>(message, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
