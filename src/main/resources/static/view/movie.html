@@ -1,8 +1,30 @@
 <div>
-    Movies: 
+    <form novalidate='' name="formMovie">
+        <div>
+            Title:
+            <input name="title" type="text" ng-model="movie.title" required="true" />
+            <span ng-show="formMovie.title.$error.required && formMovie.title.$dirty">Required</span>
+        </div>
+        <div>
+            Genre:
+            <input name="genre" type="text" ng-model="movie.genre" required="true" />
+            <span ng-show="formMovie.genre.$error.required && formMovie.genre.$dirty">Required</span>
+        </div>
+        <div>
+            <input type="button" value="Save" ng-click="save()" ng-disabled="formMovie.$invalid" />
+            <input type="button" value="Cancel" ng-click="cancelUpdate(movie)" ng-disabled="formMovie.$pristine" />
+        </div>
+    </form>
+
+    Movies:
     <ol>
         <div ng-repeat="movie in movies">
-            <li><b>{{movie.title}}</b> {{'  ['+ movie.genre +']'}}</li>
+            <li>
+                <b>{{movie.title}}</b> {{' ['+ movie.genre +']'}}
+                <a href="movies/{{movie.id}}">Details</a>
+                <input type="button" value="Delete" ng-click="delete(movie)" />
+                <input type="button" value="Update" ng-click="update(movie)" />
+            </li>
         </div>
     </ol>
 </div>
